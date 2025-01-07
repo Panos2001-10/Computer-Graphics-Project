@@ -7,6 +7,7 @@ TagManager:
   - CinemachineTarget
   - Door
   - Text
+  - Lever
   layers:
   - Default
   - TransparentFX
