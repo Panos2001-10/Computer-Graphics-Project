@@ -9,6 +9,7 @@ TagManager:
   - Text
   - Lever
   - Trap
+  - Room
   layers:
   - Default
   - TransparentFX
