@@ -7,6 +7,7 @@ public class SpikeTrap : MonoBehaviour
     public Vector3 raisedPosition; // Local position when spikes are raised
     public float interval = 0.5f; // Time interval between switching states
     public float moveSpeed = 5f; // Speed at which the spikes move
+    public int damage = 1; // Damage dealt to the player
 
     private bool isRising = false; // To determine if spikes are currently rising
     private float timer = 0f; // Timer to track intervals
@@ -48,8 +49,12 @@ public class SpikeTrap : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player hit by spikes!");
-            // Add damage logic here
+            // Get the PlayerHealth component and apply damage
+            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damage);
+            }
         }
     }
 }

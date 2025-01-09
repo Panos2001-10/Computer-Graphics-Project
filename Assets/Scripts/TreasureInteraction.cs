@@ -1,11 +1,12 @@
 using UnityEngine;
+using TMPro; // Import TextMeshPro namespace
 
 public class TreasureInteraction : MonoBehaviour
 {
     public GameObject goldenDragon; // The treasure to disappear
     public GameObject interactionPrompt; // UI prompt to display "Press F to collect"
     public int treasureValue = 1; // Value of the treasure (e.g., 1 point)
-
+    public TextMeshProUGUI treasureCounterText; // UI Text for displaying "Treasures: X"
     private bool isPlayerNearby = false; // To track if the player is in range
 
     private void Start()
@@ -14,6 +15,9 @@ public class TreasureInteraction : MonoBehaviour
         {
             interactionPrompt.SetActive(false); // Hide the interaction prompt initially
         }
+
+        // Initialize the treasure counter
+        UpdateTreasureCounter();
     }
 
     private void Update()
@@ -58,6 +62,11 @@ public class TreasureInteraction : MonoBehaviour
 
         // Update the treasure count in the Game Manager
         GameManager.Instance.AddTreasure(treasureValue);
+        FindObjectOfType<PlayerHealth>().AddTreasure(1);
+
+
+        // Update the treasure counter UI
+        UpdateTreasureCounter();
 
         // Optionally, hide the interaction prompt
         if (interactionPrompt != null)
@@ -69,5 +78,13 @@ public class TreasureInteraction : MonoBehaviour
 
         // Disable further interaction with this treasure
         Destroy(this);
+    }
+
+    private void UpdateTreasureCounter()
+    {
+        if (treasureCounterText != null)
+        {
+            treasureCounterText.text = "Treasures: " + GameManager.Instance.GetTreasureCount();
+        }
     }
 }
