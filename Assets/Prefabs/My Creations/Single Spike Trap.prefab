@@ -10,7 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 182451000348681019, guid: 2fed2e033327a5f48860f5c10902f4df, type: 3}
       propertyPath: m_Name
-      value: Single Trap with Spikes
+      value: Single Spike Trap
+      objectReference: {fileID: 0}
+    - target: {fileID: 182451000348681019, guid: 2fed2e033327a5f48860f5c10902f4df, type: 3}
+      propertyPath: m_TagString
+      value: Trap
       objectReference: {fileID: 0}
     - target: {fileID: 2545646534012760587, guid: 2fed2e033327a5f48860f5c10902f4df, type: 3}
       propertyPath: m_LocalPosition.x
