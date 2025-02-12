@@ -3,59 +3,66 @@ using UnityEngine.SceneManagement; // For restarting the scene
 
 public class WellInteraction : MonoBehaviour
 {
+    // Public variables to reference UI elements and other components
     public GameObject interactionPrompt; // UI prompt to display "Press F to win"
     public GameObject winningText; // UI element for the winning text
-    private bool isPlayerNearby = false; // To track if the player is in range
+    private bool isPlayerNearby = false; // To track if the player is in range of the well
     public GameObject playerController; // Reference to the player controller script or object
 
-    public AudioSource audioSource; // Reference to AudioSource
-    public AudioClip winSound; // Sound to play when winning
+    public AudioSource audioSource; // Reference to AudioSource for playing sound
+    public AudioClip winSound; // Sound to play when the player wins
 
     private void Start()
     {
+        // Hide the interaction prompt initially when the game starts
         if (interactionPrompt != null)
         {
-            interactionPrompt.SetActive(false); // Hide the interaction prompt initially
+            interactionPrompt.SetActive(false);
         }
 
+        // Hide the winning text initially when the game starts
         if (winningText != null)
         {
-            winningText.SetActive(false); // Hide the winning text initially
+            winningText.SetActive(false);
         }
     }
 
     private void Update()
     {
+        // Check if the player is nearby and presses the 'F' key to win
         if (isPlayerNearby && Input.GetKeyDown(KeyCode.F))
         {
-            if (GameManager.Instance.GetTreasureCount() >= 2) // Check if the player has both treasures
+            // Check if the player has collected both treasures
+            if (GameManager.Instance.GetTreasureCount() >= 2)
             {
-                WinGame();
+                WinGame(); // Trigger the win sequence if both treasures are collected
             }
             else
             {
-                Debug.Log("You need to collect both treasures to win!");
+                // Optionally, you can display a message or visual cue here, but Debug.Log is removed
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        // When the player enters the trigger zone, mark the player as nearby
         if (other.CompareTag("Player"))
         {
-            isPlayerNearby = true;
+            isPlayerNearby = true; // Player is within range of the well
             if (interactionPrompt != null)
             {
-                interactionPrompt.SetActive(true); // Show the prompt when the player is nearby
+                interactionPrompt.SetActive(true); // Show the interaction prompt to the player
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        // When the player leaves the trigger zone, hide the interaction prompt
         if (other.CompareTag("Player"))
         {
-            isPlayerNearby = false;
+            isPlayerNearby = false; // Player is no longer within range
             if (interactionPrompt != null)
             {
                 interactionPrompt.SetActive(false); // Hide the prompt when the player leaves
@@ -65,33 +72,37 @@ public class WellInteraction : MonoBehaviour
 
     private void WinGame()
     {
+        // Show the winning text when the player wins the game
         if (winningText != null)
         {
-            winningText.SetActive(true); // Show the winning text
+            winningText.SetActive(true);
         }
 
-        // Stop background music
+        // Stop background music when the player wins
         BackgroundMusic.StopMusic();
 
-        // Play win sound effect
+        // Play the win sound effect
         if (audioSource != null && winSound != null)
         {
             audioSource.PlayOneShot(winSound);
         }
 
-        // Disable the player's control
+        // Disable the player's control (either by deactivating the player object or script)
         if (playerController != null)
         {
-            playerController.SetActive(false); // Disable the player object or script
+            playerController.SetActive(false);
         }
 
-        // Stop the game or reload the scene after a delay
-        Invoke("RestartGame", 8f); // Reloads the scene after 8 seconds
+        // Restart the game after a delay (8 seconds)
+        Invoke("RestartGame", 8f);
     }
 
     private void RestartGame()
     {
+        // Start the background music again when restarting the game
         BackgroundMusic.StartMusic();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Restart the current scene
+
+        // Reload the current scene to restart the game
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

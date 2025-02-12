@@ -43,9 +43,9 @@ GameObject:
   - component: {fileID: 6499411478764838851}
   - component: {fileID: 7602234728108104033}
   - component: {fileID: 4186996666059768335}
-  - component: {fileID: 5895463204486033734}
   - component: {fileID: 7648328526446385588}
   - component: {fileID: 7381610581331050175}
+  - component: {fileID: 1520689547218270151}
   m_Layer: 0
   m_Name: Box003
   m_TagString: Door
@@ -121,24 +121,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5895463204486033734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6717557493054031081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83f161664b8239c4eb3c0cb69d6179aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  door: {fileID: 6499411478764838851}
-  openPosition: {x: 0.75, y: 0, z: 0}
-  closedPosition: {x: 0, y: 0, z: 0}
-  slideSpeed: 1
-  openDoorPrompt: {fileID: 0}
-  closeDoorPrompt: {fileID: 0}
 --- !u!65 &7648328526446385588
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -181,3 +163,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 1.7774999, z: 2}
   m_Center: {x: -0.3852, y: 0.91985, z: -0.0002500005}
+--- !u!114 &1520689547218270151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6717557493054031081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bffda82ae21391458bdf5044d25bd96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openPosition: {x: 0, y: 0, z: 0}
+  closedPosition: {x: 0, y: 0, z: 0}
+  slideSpeed: 2
+  openDoorPrompt: {fileID: 0}
+  closeDoorPrompt: {fileID: 0}
+  audioSource: {fileID: 0}
+  doorInteractionSound: {fileID: 0}
