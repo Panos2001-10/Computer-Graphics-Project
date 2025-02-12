@@ -13,6 +13,9 @@ public class SlidingDoor : MonoBehaviour
     private bool isOpen = false;
     private Vector3 targetPosition;
 
+    public AudioSource audioSource; // Reference to AudioSource
+    public AudioClip doorInteractionSound; // Sound to play when interacting
+
     private void Start()
     {
         // Initialize the target position to the closed position
@@ -30,6 +33,12 @@ public class SlidingDoor : MonoBehaviour
         {
             isOpen = !isOpen;
             targetPosition = isOpen ? openPosition : closedPosition;
+
+            if (audioSource != null && doorInteractionSound != null)
+            {
+                audioSource.PlayOneShot(doorInteractionSound);
+            }
+
         }
 
         // Smoothly move the door toward the target position

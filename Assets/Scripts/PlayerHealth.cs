@@ -1,32 +1,33 @@
 using UnityEngine;
-using TMPro; // Import TextMeshPro namespace
-using UnityEngine.SceneManagement; // For restarting the scene
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 3; // Maximum health
+    public int maxHealth = 3;
     private int currentHealth;
 
-    public TextMeshProUGUI healthText; // UI text to display health
-    public TextMeshProUGUI treasureText; // UI text to display treasures
-    public GameObject gameOverUI; // UI element for the Game Over screen
-    public GameObject playerController; // Reference to the player controller script or object
+    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI treasureText;
+    public GameObject gameOverUI;
+    public GameObject playerController;
 
-    private int treasureCount = 0; // Counter for the treasures
+    private int treasureCount = 0;
+
+    public AudioSource audioSource; // Reference to AudioSource
+
+    public AudioClip damageSound;    // Sound for taking damage
+    public AudioClip treasureSound;  // Sound for collecting treasure
+    public AudioClip gameOverSound;  // Sound for game over
 
     private void Start()
     {
-        // Initialize health
         currentHealth = maxHealth;
-
-        // Initialize treasure count
         treasureCount = 0;
 
-        // Update the UI displays
         UpdateHealthText();
         UpdateTreasureText();
 
-        // Ensure the Game Over UI is hidden
         if (gameOverUI != null)
         {
             gameOverUI.SetActive(false);
@@ -35,16 +36,19 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        // Reduce health
         if (currentHealth != 0)
             currentHealth -= damage;
         
         Debug.Log($"Player Health: {currentHealth}");
 
-        // Update the health display
+        // Play damage sound effect
+        if (audioSource != null && damageSound != null)
+        {
+            audioSource.PlayOneShot(damageSound);
+        }
+
         UpdateHealthText();
 
-        // Check if the player is out of health
         if (currentHealth <= 0)
         {
             GameOver();
@@ -53,13 +57,16 @@ public class PlayerHealth : MonoBehaviour
 
     public void AddTreasure(int amount)
     {
-        // Increase the treasure count
         treasureCount += amount;
-
-        // Update the treasure display
         UpdateTreasureText();
 
         Debug.Log($"Treasures Collected: {treasureCount}");
+
+        // Play treasure pickup sound
+        if (audioSource != null && treasureSound != null)
+        {
+            audioSource.PlayOneShot(treasureSound);
+        }
     }
 
     private void UpdateHealthText()
@@ -82,25 +89,32 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("Game Over!");
 
-        // Show the Game Over UI
+        // Stop background music
+        BackgroundMusic.StopMusic();
+
+        // Play game over sound
+        if (audioSource != null && gameOverSound != null)
+        {
+            audioSource.PlayOneShot(gameOverSound);
+        }
+
         if (gameOverUI != null)
         {
             gameOverUI.SetActive(true);
         }
 
-        // Disable the player's control
         if (playerController != null)
         {
-            playerController.SetActive(false); // Disable the player object or script
+            playerController.SetActive(false);
         }
 
-        // Stop the game or reload the scene after a delay
-        Invoke("RestartGame", 3f); // Reloads the scene after 3 seconds
+        Invoke("RestartGame", 8f);  
     }
 
     private void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Restart the current scene
+        BackgroundMusic.StartMusic();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public int GetTreasureCount()

@@ -8,6 +8,8 @@ public class WellInteraction : MonoBehaviour
     private bool isPlayerNearby = false; // To track if the player is in range
     public GameObject playerController; // Reference to the player controller script or object
 
+    public AudioSource audioSource; // Reference to AudioSource
+    public AudioClip winSound; // Sound to play when winning
 
     private void Start()
     {
@@ -68,6 +70,15 @@ public class WellInteraction : MonoBehaviour
             winningText.SetActive(true); // Show the winning text
         }
 
+        // Stop background music
+        BackgroundMusic.StopMusic();
+
+        // Play win sound effect
+        if (audioSource != null && winSound != null)
+        {
+            audioSource.PlayOneShot(winSound);
+        }
+
         // Disable the player's control
         if (playerController != null)
         {
@@ -75,11 +86,12 @@ public class WellInteraction : MonoBehaviour
         }
 
         // Stop the game or reload the scene after a delay
-        Invoke("RestartGame", 3f); // Reloads the scene after 3 seconds
+        Invoke("RestartGame", 8f); // Reloads the scene after 8 seconds
     }
 
     private void RestartGame()
     {
+        BackgroundMusic.StartMusic();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Restart the current scene
     }
 }
