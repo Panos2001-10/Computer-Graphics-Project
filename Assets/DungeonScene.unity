@@ -1636,6 +1636,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Paladin J Nordstrom
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b63832a0663c07e4d801ae99dd76072a, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: b63832a0663c07e4d801ae99dd76072a, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: b63832a0663c07e4d801ae99dd76072a, type: 3}
+    - target: {fileID: 5866666021909216657, guid: b63832a0663c07e4d801ae99dd76072a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: b63832a0663c07e4d801ae99dd76072a, type: 3}
       propertyPath: m_Controller
       value: 
@@ -2066,7 +2078,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 32.8, y: 64}
+  m_AnchoredPosition: {x: -5.7, y: 64}
   m_SizeDelta: {x: 381.6324, y: 67.3328}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &641899553
@@ -3248,6 +3260,10 @@ PrefabInstance:
     - target: {fileID: 2317283646948248277, guid: 6528efeec06cfc84fb88291c23010c08, type: 3}
       propertyPath: m_Name
       value: Curved Hallway (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2317283646948248277, guid: 6528efeec06cfc84fb88291c23010c08, type: 3}
+      propertyPath: m_TagString
+      value: Room
       objectReference: {fileID: 0}
     - target: {fileID: 6962308228698376406, guid: 6528efeec06cfc84fb88291c23010c08, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6359,6 +6375,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Curved Hallway (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2317283646948248277, guid: 6528efeec06cfc84fb88291c23010c08, type: 3}
+      propertyPath: m_TagString
+      value: Room
+      objectReference: {fileID: 0}
     - target: {fileID: 6962308228698376406, guid: 6528efeec06cfc84fb88291c23010c08, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.777113
@@ -7128,6 +7148,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Room
       objectReference: {fileID: 0}
+    - target: {fileID: 1974434321011593045, guid: 3e800c69d807e1a42af82916667ab5f8, type: 3}
+      propertyPath: m_TagString
+      value: Room
+      objectReference: {fileID: 0}
     - target: {fileID: 2080370724535284867, guid: 3e800c69d807e1a42af82916667ab5f8, type: 3}
       propertyPath: audioSource
       value: 
@@ -7198,7 +7222,7 @@ PrefabInstance:
       objectReference: {fileID: 1331730710}
     - target: {fileID: 2730070065696494163, guid: 3e800c69d807e1a42af82916667ab5f8, type: 3}
       propertyPath: openPosition.x
-      value: 0.75
+      value: -0.75
       objectReference: {fileID: 0}
     - target: {fileID: 2730070065696494163, guid: 3e800c69d807e1a42af82916667ab5f8, type: 3}
       propertyPath: closeDoorPrompt
@@ -7417,6 +7441,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hallway
       objectReference: {fileID: 0}
+    - target: {fileID: 8134272178583696759, guid: 351729cd0dbd2a64492e1680404a8c6b, type: 3}
+      propertyPath: m_TagString
+      value: Room
+      objectReference: {fileID: 0}
     - target: {fileID: 8178126761784456356, guid: 351729cd0dbd2a64492e1680404a8c6b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.2631226
@@ -7492,7 +7520,7 @@ GameObject:
   - component: {fileID: 6909763525671793369}
   m_Layer: 0
   m_Name: Starting Room
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -8214,6 +8242,10 @@ PrefabInstance:
     - target: {fileID: 6762703450329715842, guid: 0d16ce3f3041111459cc92958419232c, type: 3}
       propertyPath: m_Name
       value: Trap Room Pit
+      objectReference: {fileID: 0}
+    - target: {fileID: 6762703450329715842, guid: 0d16ce3f3041111459cc92958419232c, type: 3}
+      propertyPath: m_TagString
+      value: Room
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
