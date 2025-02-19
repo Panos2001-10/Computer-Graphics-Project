@@ -39,7 +39,7 @@ public class WellInteraction : MonoBehaviour
             }
             else
             {
-                // Optionally, you can display a message or visual cue here, but Debug.Log is removed
+                // Display message or visual cue here
             }
         }
     }
