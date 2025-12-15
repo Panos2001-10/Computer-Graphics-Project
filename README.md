@@ -23,14 +23,14 @@ This project showcases basic game mechanics, including player interaction, objec
 - **SPACE**: Jumping
 - **F**: Interact with objects (collect treasures, open doors, etc.)
 
-## Screenshots & Video
-Below are some in-game images and a link to the youtube video:
+## Screenshots
+Below are some in-game images:
 ![image](https://github.com/user-attachments/assets/9cac73a8-0377-490e-8cb2-7000be9132dc)
 ---
 ![image](https://github.com/user-attachments/assets/cd8dc4f9-d975-4d34-809b-377984a123c1)
----
+
+## Video Showcase
 [https://youtu.be/uYxNl-MnSc8](https://www.youtube.com/watch?v=uYxNl-MnSc8)
----
 
 ## Credits
 - Developed by: **Panagiotis Kapsochas**
@@ -39,4 +39,5 @@ Below are some in-game images and a link to the youtube video:
 
 ## License
 This project is for educational purposes only and is not intended for commercial use.
+
 
